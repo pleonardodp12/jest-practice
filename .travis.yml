@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - "stable"
+cache:
+  directories:
+    - node_modules
+script:
+  - npm install
+  - npm build
+  
+deploy:
+  provider: heroku
+  api_key: 
+    secure: $HEROKU_API_KEY
+  app: $HEROKU_APP_NAME
+  skip_cleanup: true
+  on:
+    tags: true
